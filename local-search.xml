@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>搭建一个属于你自己的博客（每日连载更新中）</title>
+    <link href="/2024/01/27/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2024/01/27/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<p>现在关于搭建个人博客，网上有很多教程，但是我在跟着那些教程走时遇到了很多奇奇怪怪的问题，对于一些不是很熟悉电脑的人来说，这些问题解决起来可能会比较困难，于是便有了这篇文章，手把手教你搭建一个属于你自己的博客。<br>跟着本文的教学，你将得到一个基于<strong>HEXO框架</strong>的博客，并且通过<strong>Github Page</strong>免费发布网页，最终使用<strong>Netlify</strong>在你的Git仓库中触发自动化的构建和部署流程以确保代码的更改能快速上线。<br><strong>前排提醒：构建一个个人博客是一件很酷的事，但也不是一件容易的事。如果你已经下定决心，就请做好遇到各种抽象问题的准备，继续看下去吧</strong>  </p><hr><h2 id="1-安装Git和Node-js"><a href="#1-安装Git和Node-js" class="headerlink" title="1. 安装Git和Node.js"></a>1. 安装Git和Node.js</h2><h3 id="1-1-安装Git"><a href="#1-1-安装Git" class="headerlink" title="1.1 安装Git"></a>1.1 安装Git</h3><p>进入以下网址<br><a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>点击右侧的<strong>Download for Windows</strong>，然后选择合适的版本（一般是Standalone Installer下方的64-bit版）下载安装即可。<br>安装时，如果你不是很熟悉Git，不需要进行一些特别个性化的配置，就只要一路无脑“下一步”，最后安装即可。<br>完成后打开命令行，输入 <code>git --version</code> 命令并且回车，如果有输出版本信息即说明安装正确。<br>如果你对Git比较感兴趣，想进一步学习，笔者推荐以下教程（非广告，只是笔者学习的时候，感觉这个最浅显易懂）<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p><h3 id="1-2-安装Node-js"><a href="#1-2-安装Node-js" class="headerlink" title="1.2 安装Node.js"></a>1.2 安装Node.js</h3><p>进入以下网址<br><a href="https://nodejs.org/">https://nodejs.org</a><br>安装那个<strong>Recommanded For Most Users</strong>的版本（当然，如果你头铁非要体验最新版本也行，但是不保证不会出问题（）），安装时也是无脑“下一步”即可。<br>完成后打开命令行，输入 <code>node -v</code> 命令并且回车，有提示即安装正确。  </p><hr><h2 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h3><p>创建一个文件夹用于存储博客的本地文件（我个人是放在了磁盘根目录，感觉比较保险），并且双击进入文件夹。<br>在文件夹空白处右键鼠标，点击“显示更多选项”，接着点击<strong>Open Git Bash Here</strong>,这时候会出现一个弹窗，这个就是当前文件夹下的<strong>Git命令行</strong>，弹窗上有一行文字显示了当前的电脑用户以及Git命令行所属的路径，为了后面叙述方便，我们将这一行命名为<strong>命令头</strong>（只是我为了叙述方便随便起的，不是严谨的命名）。<br>接下来你需要做的是在现在这个Git命令行中依次运行以下5条命令：  </p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmd">npm install hexo-cli -g<br>hexo init blog<br><span class="hljs-built_in">cd</span> blog<br>npm install<br>hexo server<br></code></pre></td></tr></table></figure><p>（命令运行完成的标志是重新弹出来一行命令头，<strong>请务必等一条命令运行完成后，再输入新的命令</strong>）</p><h3 id="2-2-hexo中的常用命令"><a href="#2-2-hexo中的常用命令" class="headerlink" title="2.2 hexo中的常用命令"></a>2.2 hexo中的常用命令</h3><table><thead><tr><th>命令</th><th>用途</th></tr></thead><tbody><tr><td>hexo g</td><td>生成网页静态文件</td></tr><tr><td>hexo cl</td><td>清空静态文件</td></tr><tr><td>hexo s</td><td>在本地运行网页</td></tr><tr><td>hexo d</td><td>将网页部署到网站</td></tr><tr><td>hexo g -d</td><td>生成静态文件并部署到网站</td></tr><tr><td>hexo new 文件名</td><td>创建新文章</td></tr></tbody></table><hr><p>到这一步，恭喜你，你已经完成基础配置了，接下来就可以准备开始搭建网页了！<br>努力码字，每日更新ing……  </p>]]></content>
+    
+    
+    <categories>
+      
+      <category>一些正经的东西</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>寄术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>一曲万情</title>
     <link href="/2024/01/20/%E4%B8%80%E6%9B%B2%E4%B8%87%E6%83%85/"/>
     <url>/2024/01/20/%E4%B8%80%E6%9B%B2%E4%B8%87%E6%83%85/</url>
